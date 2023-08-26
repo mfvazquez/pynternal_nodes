@@ -26,10 +26,7 @@ jobs:
       - name: Run tests
         run: |
           export PYTHONPATH="${PWD}"
-          coverage run -m pytest tests/integration -v --ignore=tests/integration/mcg_import --ignore=tests/unit/mcg_import
+          coverage run -m pytest
 
       - name: Show coverage report
         run: coverage report
-
-      - name: Stop Docker Compose
-        run: docker-compose down
