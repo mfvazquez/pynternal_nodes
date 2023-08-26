@@ -1,0 +1,35 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.4'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pytest coverage
+
+      - name: Run tests
+        run: |
+          export PYTHONPATH="${PWD}"
+          coverage run -m pytest tests/integration -v --ignore=tests/integration/mcg_import --ignore=tests/unit/mcg_import
+
+      - name: Show coverage report
+        run: coverage report
+
+      - name: Stop Docker Compose
+        run: docker-compose down
