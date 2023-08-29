@@ -26,6 +26,14 @@ A tree is valid if:
 
 The function has a time complexity of O(n), where 'n' represents the number of nodes in the tree. Additionally, the function has a memory complexity of O(n), as it requires memory proportional to the number of nodes in the tree.
 
+### Tests
+
+You can run the tests from the root dir running the following command:
+
+```bash
+PYTHONPATH=${PWD} pytest
+```
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
